@@ -31,7 +31,7 @@ dev: pip-compile ## Install dev requirements
 
 autopep8: ## Auto-format Python files
 	$(call install_package,autopep8)
-	$(AUTOPEP8) -i *.py --max-line-length 120
+	$(AUTOPEP8) -i api/*.py --max-line-length 120
 
 pycodestyle: dev ## Check pycodestyle standards
 	$(call install_package,pycodestyle)
@@ -48,4 +48,4 @@ clean: ## Remove the virtual environment
 	rm -rf venv
 
 run: ## Run the app using the virtual environment
-	. $(VENV)/activate; python app.py
+	. $(VENV)/activate; python api/index.py
