@@ -1,5 +1,6 @@
 from flask import Flask
 from datetime import datetime
+import pytz
 
 app = Flask(__name__)
 
@@ -24,7 +25,11 @@ def generar_barra_progreso_con_dias(fecha_inicio, fecha_actual, dias_totales):
 def home():
     # Configuración para la barra de progreso
     fecha_inicio = datetime(2024, 8, 14)
-    fecha_actual = datetime.now()  # Utilizar la fecha actual
+    
+    # Obtener la fecha actual en la zona horaria de Santiago de Chile
+    tz_santiago = pytz.timezone('America/Santiago')
+    fecha_actual = datetime.now(tz_santiago)
+    
     dias_totales = 90
 
     # Generar la barra de progreso
